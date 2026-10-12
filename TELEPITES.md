@@ -173,8 +173,16 @@ A [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 
 a pluginba van csomagolva (`szesuti/vendor/plugin-update-checker`), nem kell hozzá semmit
 beállítani.
 
-Csere„Csere a feltöltöttre”). Ettől kezdve minden
+> **Egyszeri lépés:** az 1.1.x-es oldalakon még nincs benne a frissítő, ezért ezekre az
+> 1.2.1-et **egyszer kézzel** kell feltölteni („Csere a feltöltöttre”). Ettől kezdve minden
 > további verzió magától érkezik.
+>
+> **Repóváltás (1.2.1):** az 1.2.0 még a régi repót (LodThetherneon/SZEtemeny) figyeli. Ott a
+> v1.2.1 Release mellékletét az új repóra mutató ZIP-re cseréltük, így az 1.2.0-s oldalak ezt
+> kapják meg, és utána már az új repóból frissülnek. Amelyik oldal a csere **előtt** kapta meg
+> a régi 1.2.1-et, az a régi repónál ragadt (azonos verziószám, nem lát frissítést). Ezekre az
+> 1.2.1-et egyszer kézzel kell feltölteni. Ellenőrzés: SZetemény → Beállítások → Eszközök fül, a frissítés
+> forrása `SZKK-SZUCS/SZetem-ny-` legyen.
 
 ### Új verzió kiadása
 
