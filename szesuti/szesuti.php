@@ -3,11 +3,11 @@
  * Plugin Name:       SZetemény – Sütikezelő
  * Plugin URI:        https://adatvedelemteszt.sze.hu
  * Description:       Teljes körű, GDPR/ePrivacy-kompatibilis sütikezelő: automatikus szkriptblokkolás, Google Consent Mode v2, hozzájárulás-napló, többnyelvűség, geo-célzás, sütiszkenner és részletes megjelenési beállítások.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Requires at least: 5.6
  * Requires PHP:      7.2
- * Author:            Műszaki Fejlesztési és Üzemeltetési Igazgatóság
- * Author URI:        https://adatvedelemteszt.sze.hu
+ * Author:            Kiss Zoltán – SZE Műszaki Fejlesztési és Üzemeltetési Igazgatóság
+ * Author URI:        https://munkatars.sze.hu/mfui-uzemeltetesi-referens
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       szesuti
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SZESUTI_VERSION', '1.2.0' );
+define( 'SZESUTI_VERSION', '1.2.1' );
 define( 'SZESUTI_FILE', __FILE__ );
 define( 'SZESUTI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SZESUTI_URL', plugin_dir_url( __FILE__ ) );

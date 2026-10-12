@@ -2,7 +2,7 @@
 
 Készítette: **Műszaki Fejlesztési és Üzemeltetési Igazgatóság** (Széchenyi István Egyetem)
 
-Kész, telepíthető csomag: **`dist/szetemeny-1.2.0.zip`**
+Kész, telepíthető csomag: **`dist/szetemeny-1.2.1.zip`**
 
 > **Az 1.0.0-s ZIP hibás volt, ne használd.** Linuxos tárhelyen nem lehetett sem
 > aktiválni („A bővítmény fájl nem létezik”), sem törölni. Ha már feltetted, lásd a
@@ -24,7 +24,7 @@ töröl semmit, a „Csere a feltöltöttre” pedig hibával leáll. Ne próbá
    *„SZetemény takarító: Kész. Törölve: wp-content/plugins/szesuti-1.0.0 (36 fájl).”*
    A régi, hibás SZESÜTI eltűnik a listából. A takarító magától kikapcsol.
 4. A takarítónál kattints a **Törlés** linkre – ez már rendesen törlődik.
-5. Töltsd fel és kapcsold be a `dist/szetemeny-1.2.0.zip`-et (1. pont).
+5. Töltsd fel és kapcsold be a `dist/szetemeny-1.2.1.zip`-et (1. pont).
 
 A takarító kizárólag a hibás csomag maradványát törli: egy `szesuti\szesuti.php` **nevű**
 fájlról ismeri fel, ilyen szabályos pluginban nem létezik. Más pluginhoz nem nyúl.
@@ -45,7 +45,7 @@ Töröld a `wp-content/plugins/szesuti-1.0.0` (vagy `szesuti`) mappát – azt, 
 ### A) ZIP-ből (ezt használd élesben)
 
 1. WordPress admin → **Bővítmények → Új hozzáadása → Bővítmény feltöltése**
-2. Válaszd ki a `dist/szetemeny-1.2.0.zip` fájlt → **Telepítés most**
+2. Válaszd ki a `dist/szetemeny-1.2.1.zip` fájlt → **Telepítés most**
 3. **Bekapcsolás**
 
 A ZIP gyökerében a `szesuti` mappa van, tehát közvetlenül feltölthető. A WordPress
@@ -53,7 +53,7 @@ a `wp-content/plugins/szesuti` mappába telepíti, a ZIP fájlnevétől függetl
 
 **Frissítésnél** (ha a `szesuti` már fent van): töltsd fel az új ZIP-et ugyanígy,
 a WordPress felajánlja a **„Csere a feltöltöttre”** gombot. A beállítások megmaradnak.
-Az 1.2.0-tól erre csak egyszer van szükség, utána a frissítés magától érkezik (lásd 4. rész).
+Az 1.2.1-től erre csak egyszer van szükség, utána a frissítés magától érkezik (lásd 4. rész).
 
 ### B) FTP / SSH-n (fejlesztéshez)
 
@@ -168,13 +168,12 @@ adatbázisba – tehát bármikor visszavonható a mu-plugin törlésével.
 ## 4. Frissítés 100 oldalon egyszerre (GitHub Release)
 
 Az 1.2.0-tól a plugin magától frissül a GitHub-repó kiadásaiból
-(<https://github.com/LodThetherneon/SZEtemeny/releases>), ugyanúgy, mint az SZEducate.
+(<https://github.com/SZKK-SZUCS/SZetem-ny-/releases>), ugyanúgy, mint az SZEducate.
 A [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) könyvtár
 a pluginba van csomagolva (`szesuti/vendor/plugin-update-checker`), nem kell hozzá semmit
 beállítani.
 
-> **Egyszeri lépés:** az 1.1.x-es oldalakon még nincs benne a frissítő, ezért ezekre az
-> 1.2.0-t **egyszer kézzel** kell feltölteni („Csere a feltöltöttre”). Ettől kezdve minden
+Csere„Csere a feltöltöttre”). Ettől kezdve minden
 > további verzió magától érkezik.
 
 ### Új verzió kiadása

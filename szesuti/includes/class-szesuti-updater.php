@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
 class SZESUTI_Updater {
 
 	/** A hivatalos repó. */
-	const REPOSITORY = 'https://github.com/LodThetherneon/SZEtemeny/';
+	const REPOSITORY = 'https://github.com/SZKK-SZUCS/SZetem-ny-/';
 
 	/** Csak ilyen nevű Release-mellékletből frissít (a build.ps1 kimenete). */
 	const ASSET_REGEX = '/^szetemeny-\d+\.\d+\.\d+\.zip$/';

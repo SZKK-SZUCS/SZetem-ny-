@@ -4,7 +4,7 @@ Tags: cookie, gdpr, consent, cookie consent, consent mode
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -103,6 +103,16 @@ IP-címet nem. Az IP-ből saltinggal képzett SHA-256 lenyomatot képez, ami ön
 vissza. Az URL és a böngészőazonosító mentése külön ki-be kapcsolható.
 
 == Changelog ==
+
+= 1.2.1 =
+* A frissítések forrása mostantól a https://github.com/SZKK-SZUCS/SZetem-ny- repó (az SZKK-SZUCS
+  szervezet alatt, az SZEducate mellett), a korábbi személyes LodThetherneon/SZEtemeny helyett.
+  Így a kiadás nem egy személyes fiókhoz kötődik. Az 1.2.0 még a régi repóból frissül, ezért
+  arra az 1.2.1-et egyszer kézzel kell feltölteni (vagy a régi repóban kiadni), utána az
+  oldalak már az új repót figyelik.
+* A bővítmény szerzője a Bővítmények listában: Kiss Zoltán – SZE Műszaki Fejlesztési és
+  Üzemeltetési Igazgatóság, a link a https://munkatars.sze.hu/mfui-uzemeltetesi-referens
+  oldalra visz (eddig a tesztoldalra mutatott).
 
 = 1.2.0 =
 * Új: automatikus frissítés a GitHub-repó kiadásaiból (Release), a beépített Plugin Update
