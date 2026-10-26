@@ -3,7 +3,7 @@
  * Plugin Name:       SZetemény – Sütikezelő
  * Plugin URI:        https://adatvedelemteszt.sze.hu
  * Description:       Teljes körű, GDPR/ePrivacy-kompatibilis sütikezelő: automatikus szkriptblokkolás, Google Consent Mode v2, hozzájárulás-napló, többnyelvűség, geo-célzás, sütiszkenner és részletes megjelenési beállítások.
- * Version:           1.2.1
+ * Version:           1.2.2
  * Requires at least: 5.6
  * Requires PHP:      7.2
  * Author:            Kiss Zoltán – SZE Műszaki Fejlesztési és Üzemeltetési Igazgatóság
@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SZESUTI_VERSION', '1.2.1' );
+define( 'SZESUTI_VERSION', '1.2.2' );
 define( 'SZESUTI_FILE', __FILE__ );
 define( 'SZESUTI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'SZESUTI_URL', plugin_dir_url( __FILE__ ) );
@@ -42,6 +42,7 @@ require_once SZESUTI_DIR . 'includes/class-szesuti-shortcodes.php';
 require_once SZESUTI_DIR . 'includes/class-szesuti-rest.php';
 require_once SZESUTI_DIR . 'includes/class-szesuti-scanner.php';
 require_once SZESUTI_DIR . 'includes/class-szesuti-updater.php';
+require_once SZESUTI_DIR . 'includes/class-szesuti-cache.php';
 
 if ( is_admin() ) {
 	require_once SZESUTI_DIR . 'includes/class-szesuti-admin.php';
@@ -122,6 +123,7 @@ final class SZESUTI_Plugin {
 		new SZESUTI_Shortcodes( $this->settings, $this->i18n );
 		new SZESUTI_Rest( $this->settings, $this->log, $this->geo );
 		$this->updater = new SZESUTI_Updater( $this->settings );
+		SZESUTI_Cache::init();
 
 		if ( is_admin() ) {
 			new SZESUTI_Admin( $this->settings, $this->i18n, $this->scanner, $this->log, $this->library );
@@ -156,6 +158,9 @@ final class SZESUTI_Plugin {
 		}
 
 		update_option( 'szesuti_db_version', SZESUTI_VERSION, false );
+
+		// Új verzió: a gyorsítótárban lévő HTML még a régi blokkolási listát hordozza.
+		SZESUTI_Cache::purge_all();
 	}
 
 	public function load_textdomain() {
@@ -185,11 +190,17 @@ final class SZESUTI_Plugin {
 		update_option( 'szesuti_activated_at', time(), false );
 		update_option( 'szesuti_db_version', SZESUTI_VERSION, false );
 		set_transient( 'szesuti_just_activated', 1, 60 );
+
+		// A gyorsítótárban banner nélküli, blokkolatlan oldalak lehetnek.
+		SZESUTI_Cache::purge_all();
 	}
 
 	/** Deaktiváláskor fut. */
 	public static function deactivate() {
 		wp_clear_scheduled_hook( 'szesuti_daily_cleanup' );
+
+		// Különben a gyorsítótárban maradt oldalakon a blokkolt szkriptek feloldó nélkül maradnának.
+		SZESUTI_Cache::purge_all();
 	}
 }
 

@@ -845,6 +845,11 @@ class SZESUTI_Admin {
 			return;
 		}
 
+		$purged = SZESUTI_Cache::notice_text();
+		if ( '' !== $purged ) {
+			$map[ $msg ][1] .= ' ' . $purged;
+		}
+
 		// A sikerüzenet lebegő értesítés: nem tolja le a tartalmat, és magától eltűnik.
 		// A teljes törlés összegzése kivétel: azt el kell tudni olvasni.
 		if ( 'success' === $map[ $msg ][0] && 'wiped' !== $msg ) {

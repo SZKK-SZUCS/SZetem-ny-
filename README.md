@@ -6,7 +6,7 @@ saját oldalaira. Fizetős CMP-k (Cookiebot, Complianz Pro stb.) kiváltására 
 
 Készítette: **Műszaki Fejlesztési és Üzemeltetési Igazgatóság** (Széchenyi István Egyetem)
 
-- Verzió: **1.2.1** · WordPress 5.6+ · PHP 7.2+
+- Verzió: **1.2.2** · WordPress 5.6+ · PHP 7.2+
 - Telepítési és bevezetési útmutató: **[TELEPITES.md](TELEPITES.md)**
 - Változásnapló: [szesuti/readme.txt](szesuti/readme.txt) (Changelog szakasz)
 

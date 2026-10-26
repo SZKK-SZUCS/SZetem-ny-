@@ -2,7 +2,7 @@
 
 Készítette: **Műszaki Fejlesztési és Üzemeltetési Igazgatóság** (Széchenyi István Egyetem)
 
-Kész, telepíthető csomag: **`dist/szetemeny-1.2.1.zip`**
+Kész, telepíthető csomag: **`dist/szetemeny-1.2.2.zip`**
 
 > **Az 1.0.0-s ZIP hibás volt, ne használd.** Linuxos tárhelyen nem lehetett sem
 > aktiválni („A bővítmény fájl nem létezik”), sem törölni. Ha már feltetted, lásd a
@@ -24,7 +24,7 @@ töröl semmit, a „Csere a feltöltöttre” pedig hibával leáll. Ne próbá
    *„SZetemény takarító: Kész. Törölve: wp-content/plugins/szesuti-1.0.0 (36 fájl).”*
    A régi, hibás SZESÜTI eltűnik a listából. A takarító magától kikapcsol.
 4. A takarítónál kattints a **Törlés** linkre – ez már rendesen törlődik.
-5. Töltsd fel és kapcsold be a `dist/szetemeny-1.2.1.zip`-et (1. pont).
+5. Töltsd fel és kapcsold be a `dist/szetemeny-1.2.2.zip`-et (1. pont).
 
 A takarító kizárólag a hibás csomag maradványát törli: egy `szesuti\szesuti.php` **nevű**
 fájlról ismeri fel, ilyen szabályos pluginban nem létezik. Más pluginhoz nem nyúl.
@@ -45,7 +45,7 @@ Töröld a `wp-content/plugins/szesuti-1.0.0` (vagy `szesuti`) mappát – azt, 
 ### A) ZIP-ből (ezt használd élesben)
 
 1. WordPress admin → **Bővítmények → Új hozzáadása → Bővítmény feltöltése**
-2. Válaszd ki a `dist/szetemeny-1.2.1.zip` fájlt → **Telepítés most**
+2. Válaszd ki a `dist/szetemeny-1.2.2.zip` fájlt → **Telepítés most**
 3. **Bekapcsolás**
 
 A ZIP gyökerében a `szesuti` mappa van, tehát közvetlenül feltölthető. A WordPress
@@ -190,18 +190,18 @@ beállítani.
 2. Csomagolás:
 
    ```powershell
-   .\build.ps1 -Version 1.2.1
+   .\build.ps1 -Version 1.2.2
    ```
 
-   Ez elkészíti a `dist/szetemeny-1.2.1.zip`-et és mellé a `dist/szetemeny-1.2.1-release.md`-t
+   Ez elkészíti a `dist/szetemeny-1.2.2.zip`-et és mellé a `dist/szetemeny-1.2.2-release.md`-t
    (a changelog bejegyzés, ez lesz a Release leírása).
 3. Commit és push a `main` ágra.
 4. GitHubon: **Releases → Draft a new release**
-   - **Tag:** `v1.2.1` (új tag, cél: `main`). A verziót a plugin a tagből olvassa ki, ezért
+   - **Tag:** `v1.2.2` (új tag, cél: `main`). A verziót a plugin a tagből olvassa ki, ezért
      egyezzen a `build.ps1 -Version` értékével.
-   - **Leírás:** a `szetemeny-1.2.1-release.md` tartalma. A WordPress a „Részletek
+   - **Leírás:** a `szetemeny-1.2.2-release.md` tartalma. A WordPress a „Részletek
      megtekintése” ablakban ezt mutatja változásnaplóként.
-   - **Melléklet:** húzd be a `dist/szetemeny-1.2.1.zip`-et. **Pontosan ilyen nevű**
+   - **Melléklet:** húzd be a `dist/szetemeny-1.2.2.zip`-et. **Pontosan ilyen nevű**
      (`szetemeny-x.y.z.zip`) melléklet kell, más ZIP-et a frissítő nem fogad el.
    - Ne jelöld „pre-release”-nek és ne hagyd piszkozatban, azokat a frissítő kihagyja.
    - **Publish release**.
@@ -339,6 +339,12 @@ mindig a böngésző olvassa ki a sütiből, a szerver nem írja bele az oldalba
 - a **geo-célzásnál** hagyd „böngészőből, gyorsítótár-biztos” módban,
 - az **„Elrejtés keresőrobotok elől”** opciót hagyd **kikapcsolva** – különben a
   robotnak készült, banner nélküli változat kerülhet a cache-be.
+- A blokkolás és a kivételek a HTML-be íródnak. Mentéskor (1.2.2-től) a plugin üríti a
+  felismert gyorsítótár-bővítményeket (Nginx Helper, LiteSpeed, WP Rocket, W3TC, Super Cache
+  stb.), az értesítés kiírja, melyiket. **Bővítmény nélküli szerveroldali cache-t** (nginx
+  FastCGI Nginx Helper nélkül, Varnish, Cloudflare) kézzel kell üríteni, különben egy új
+  kivétel csak a cache lejárta után érvényesül. Ellenőrzés: a válaszfejlécben
+  `X-FastCGI-Cache: HIT`, és a HTML-ben a szkript még `type="text/plain"`.
 
 **GTM és Consent Mode**
 Ha Consent Mode-ot használsz, hagyd bekapcsolva a „Google mérőkódok kihagyása a

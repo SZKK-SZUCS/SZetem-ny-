@@ -4,7 +4,7 @@ Tags: cookie, gdpr, consent, cookie consent, consent mode
 Requires at least: 5.6
 Tested up to: 6.7
 Requires PHP: 7.2
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,7 +64,8 @@ JavaScript:
 Szűrők: `szesuti_settings`, `szesuti_services`, `szesuti_known_cookies`,
 `szesuti_blocker_rules`, `szesuti_js_config`, `szesuti_should_display`,
 `szesuti_run_blocker`, `szesuti_current_language`, `szesuti_visitor_country`,
-`szesuti_banner_template`, `szesuti_update_url`, `szesuti_update_repository`.
+`szesuti_banner_template`, `szesuti_update_url`, `szesuti_update_repository`,
+`szesuti_safe_hosts`, `szesuti_purge_page_cache`, `szesuti_purged_page_caches`.
 
 Sablon felülírása a témában: `wp-content/themes/<téma>/szesuti/banner.php`
 
@@ -92,6 +93,11 @@ marad – a feloldás a böngészőben történik. Két beállításra figyelj:
 a geo-célzásnál használd a „böngészőből, gyorsítótár-biztos” módot, és hagyd kikapcsolva
 a „Elrejtés keresőrobotok elől” opciót.
 
+Mentéskor a plugin üríti a felismert gyorsítótár-bővítményeket (Nginx Helper, LiteSpeed,
+WP Rocket stb.). Ha a szerveren bővítmény nélküli gyorsítótár fut (pl. nginx FastCGI cache
+Nginx Helper nélkül, Varnish, Cloudflare), azt egy beállítás-módosítás után kézzel kell
+üríteni, különben a látogatók a régi blokkolási listát kapják.
+
 = Mi történik, ha a látogató visszavonja a hozzájárulását? =
 
 A plugin alapértelmezetten újratölti az oldalt. Erre azért van szükség, mert a már
@@ -103,6 +109,23 @@ IP-címet nem. Az IP-ből saltinggal képzett SHA-256 lenyomatot képez, ami ön
 vissza. Az URL és a böngészőazonosító mentése külön ki-be kapcsolható.
 
 == Changelog ==
+
+= 1.2.2 =
+* A Tailwind CSS „Play CDN” (`cdn.tailwindcss.com`) felkerült a beépített biztonságos külső
+  források közé. Az ezzel épített oldalakon (pl. aifuture.sze.hu) a szigorú mód eddig
+  ismeretlen, marketing kategóriás forrásnak vette. Elfogadás előtt így az oldal teljes CSS-e
+  hiányzott: szétesett fejléc, rossz betűtípusok és logók. A Tailwind nem rak le sütit és nem
+  követ, csak a böngészőben állítja elő a CSS-t.
+* Új: a beállítások vagy a háttéradatbázis mentésekor, a plugin be- és kikapcsolásakor és
+  frissítés után a plugin üríti a felismert oldal-gyorsítótárakat: Nginx Helper (nginx FastCGI),
+  LiteSpeed, WP Rocket, W3 Total Cache, WP Super Cache, WP Fastest Cache, Cache Enabler,
+  SiteGround, Breeze, Hummingbird. A blokkolás és a kivételek a HTML-be íródnak, ezért eddig
+  egy módosítás a gyorsítótárazott oldalakon csak a gyorsítótár lejárta után érvényesült.
+  Ezért tűnt úgy, hogy egy frissen felvett kivétel „nem működik”. Mentés után az értesítés
+  kiírja, mely gyorsítótárakat ürítette. Szerveroldali gyorsítótárat, amelyhez nincs WordPress-bővítmény
+  (nginx FastCGI Nginx Helper nélkül, Varnish, Cloudflare), továbbra is kézzel kell
+  üríteni. Kikapcsolható a `szesuti_purge_page_cache` szűrővel, saját gyorsítótár a
+  `szesuti_purged_page_caches` szűrővel köthető be.
 
 = 1.2.1 =
 * A frissítések forrása mostantól a https://github.com/SZKK-SZUCS/SZetem-ny- repó (az SZKK-SZUCS

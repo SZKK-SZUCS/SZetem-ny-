@@ -504,6 +504,8 @@ class SZESUTI_Cookie_DB {
 			'stackpath.bootstrapcdn.com',
 			'maxcdn.bootstrapcdn.com',
 			'cdn.datatables.net',
+			// CSS-keretrendszer (a Tailwind Play CDN futás közben állítja elő az oldal CSS-ét).
+			'cdn.tailwindcss.com',
 			// Ikon- és betűtípus-szolgáltatók.
 			'use.fontawesome.com',
 			'kit.fontawesome.com',
